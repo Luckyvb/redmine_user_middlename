@@ -23,4 +23,4 @@ Redmine:
 License
 ====================
 
-LICENSE.md
+[LICENSE.md](README.md)
