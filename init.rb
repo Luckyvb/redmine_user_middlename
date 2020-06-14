@@ -37,9 +37,3 @@ end
 Rails.application.config.to_prepare do
   UserMiddlename.apply_patch
 end
-
-#ActionDispatch::Callbacks.to_prepare do
-#  unless User.included_modules.include?(UserMiddlename::Patches::UserPatch)
-#    User.send(:include, UserMiddleName::Patches::UserPatch)
-#  end
-#end
