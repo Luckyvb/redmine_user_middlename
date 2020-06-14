@@ -40,29 +40,21 @@ module UserMiddlename
 
       def self.included(base)
         base.send(:include, InstanceMethods)
-
-        base.class_eval do
-          #alias_method :name_formatter_without_middlename, :name_formatter
-          #alias_method :name_formatter, :name_formatter_with_middlename
-        end
       end
 
       module InstanceMethods
+
         def middlename
-          setting = Setting.plugin_user_middlename
-          Rails.logger.info setting
-          fid = setting['field_id'] #setting['field_id'].nil? ? setting[:default]['field_id'] : setting['field_id']
+          fid = Setting.plugin_user_middlenamesetting['field_id']
           # look for our custom field in the database
           if !fid.blank?
-            cf = CustomField.where(["id = ?", 1]).first
+            cf = CustomField.where(["id = ?", fid]).first
             if cf
               # get the value for the custom field (the method is provided by act_as_customizable behavior plugin)
               custom_value_for(cf)
             end
           end
         end
-
-        private
 
       end
 
