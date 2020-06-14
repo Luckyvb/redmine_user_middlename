@@ -1,0 +1,9 @@
+class UserAddMiddlename < Rails.version < '5.1' ? ActiveRecord::Migration : ActiveRecord::Migration[4.2]
+  def self.up
+    add_column :users, :middlename, :string, :default => nil, :after => :firstname
+  end
+
+  def self.down
+    remove_column :users, :middlename
+  end
+end

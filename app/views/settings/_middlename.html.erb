@@ -1,0 +1,14 @@
+<% defaults = Redmine::Plugin::registered_plugins[:user_middlename].settings[:default] %>
+<p>
+  <label><%= l(:setting_custom_field) %></label>
+  <%= hidden_field_tag 'settings[field_id]', '' %>
+  <%= select_tag('settings[field_id]', options_from_collection_for_select(UserCustomField.all, :id, :name, (@settings["field_id"] || defaults["field_id"]).to_s), include_blank: true, multiple: false, class: 'umn_field_id') %>
+</p>
+
+<script>
+  $(document).ready(function() {
+    if(typeof($('.umn_field_id').select2) !== 'undefined') {
+        $('.umn_field_id').select2({allowClear: true});
+    }
+  });
+</script>
