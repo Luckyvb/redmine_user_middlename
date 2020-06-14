@@ -45,7 +45,7 @@ module UserMiddlename
       module InstanceMethods
 
         def middlename
-          fid = Setting.plugin_user_middlenamesetting['field_id']
+          fid = Setting.plugin_user_middlename['field_id']
           # look for our custom field in the database
           if !fid.blank?
             cf = CustomField.where(["id = ?", fid]).first
